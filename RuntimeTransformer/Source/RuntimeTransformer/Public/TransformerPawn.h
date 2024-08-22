@@ -727,7 +727,7 @@ public:
 	void ResyncSelection();
 
 	//Networking Variables
-private:
+protected:
 
 	/*
 	* Ignore Non-Replicated Objects means that the objects that do not satisfy
@@ -736,7 +736,7 @@ private:
 	* - For an actor, replicating must be on
 	* - For a component, both its owner and itself need to be replicating
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Replicated Runtime Transformer", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Replicated Runtime Transformer")
 	bool bIgnoreNonReplicatedObjects;
 
 	/*
@@ -747,11 +747,11 @@ private:
 	 * (so no selection occurs).
 	 * The time it actually takes to Replicate can be more because it also waits for all clone objects to have begun play.
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Replicated Runtime Transformer", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Replicated Runtime Transformer")
 	float MinimumCloneReplicationTime;
 
 	//The frequency at which checks are done on newly spawned clones. Whether they are suitable for replication.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Replicated Runtime Transformer", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Replicated Runtime Transformer")
 	float CloneReplicationCheckFrequency;
 
 	FTransform	NetworkDeltaTransform;
@@ -764,10 +764,10 @@ private:
 
 
 	//Other Vars
-private:
+protected:
 
 	//The Current Space being used, whether it is Local or World.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	ESpaceType CurrentSpaceType;
 
 	//The Transform Accumulated for Snapping
@@ -778,7 +778,7 @@ private:
 	 * transformation. This can even be childs of classes that are already defined
 	 * to allow the user to customize gizmo functionality
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gizmo", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gizmo")
 	TSubclassOf<class ATranslationGizmo> TranslationGizmoClass;
 
 	/**
@@ -786,7 +786,7 @@ private:
 	 * transformation. This can even be childs of classes that are already defined
 	 * to allow the user to customize gizmo functionality
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gizmo", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gizmo")
 	TSubclassOf<class ARotationGizmo> RotationGizmoClass;
 
 	/**
@@ -794,7 +794,7 @@ private:
 	 * transformation. This can even be childs of classes that are already defined
 	 * to allow the user to customize gizmo functionality
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gizmo", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Gizmo")
 	TSubclassOf<class AScaleGizmo> ScaleGizmoClass;
 
 	UPROPERTY()
@@ -805,11 +805,11 @@ private:
 	ETransformationDomain CurrentDomain;
 
 	//Tell where the Gizmo should be placed when multiple objects are selected
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	EGizmoPlacement GizmoPlacement;
 
 	// Var that tells which is the Current Transformation taking place
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	ETransformationType CurrentTransformation;
 
 	/**
@@ -822,7 +822,7 @@ private:
 	* Map storing the Snap values for each transformation
 	* bSnappingEnabled must be true AND, the value for the current transform MUST NOT be 0 for these values to take effect.
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	TMap<ETransformationType, float> SnappingValues;
 
 	/**
@@ -832,7 +832,7 @@ private:
 
 	* @see SetSnappingValue function & SnappingValues Map var
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	TMap<ETransformationType, bool> SnappingEnabled;
 
 	/**
@@ -841,14 +841,14 @@ private:
 	* if false, no movement transformations will be attempted on Static/Stationary Components
 
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	bool bForceMobility;
 
 	/*
 	 * This property only matters when multiple objects are selected.
 	 * Whether multiple objects should rotate on their local axes (true) or on the axes the Gizmo is in (false)
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	bool bRotateOnLocalAxis;
 
 	/**
@@ -858,11 +858,11 @@ private:
 
 	 * IN BOTH Situations, the UFocusable Objects have IFocusable::OnNewDeltaTransformation called.
 	*/
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	bool bTransformUFocusableObjects;
 
 	//Property that checks whether a CLICK on an already selected object should deselect the object or not.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	bool bToggleSelectedInMultiSelection;
 
 	/*
@@ -870,7 +870,7 @@ private:
 	 or the Actors are.
 	 * This property affects how Cloning, Tracing is done and Interface checking is done
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Runtime Transformations")
 	bool bComponentBased;
 
 	//Whether we need to Sync with Server if there is a mismatch in number of Selections.
