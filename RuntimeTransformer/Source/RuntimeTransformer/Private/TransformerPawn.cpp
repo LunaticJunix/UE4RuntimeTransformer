@@ -229,7 +229,7 @@ bool ATransformerPawn::MouseTraceByChannel(float TraceDistance
 		if (!bTraceSuccessful && !bAppendToList)
 			ServerDeselectAll(false);
 	}
-	return false;
+	return bTraceSuccessful;
 }
 
 bool ATransformerPawn::MouseTraceByProfile(float TraceDistance
